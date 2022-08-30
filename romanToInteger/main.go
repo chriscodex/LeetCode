@@ -79,3 +79,18 @@ func romainToInt(s string) int {
 	fmt.Println(v)
 	return v
 }
+
+func main() {
+	s := "MDCXCV"
+	fmt.Println(s)
+	newP := strToNum(s)
+
+	fmt.Println(newP)
+
+	fmt.Println()
+	v := total(newP, 0)
+
+	fmt.Println(v)
+	val = 0
+	romainToInt(s)
+}
