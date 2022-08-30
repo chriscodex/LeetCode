@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 func getThreeFirst(s string) *[]string {
 	arr := []string{}
 	str := ""
@@ -53,4 +57,54 @@ func strToNum(s string) []int {
 		}
 	}
 	return arr
+}
+
+func main() {
+	/*  */
+	s := "MCMXCIV"
+	fmt.Println(s)
+	newP := strToNum(s)
+	val := newP[0]
+	sli := newP[1:]
+
+	fmt.Println(sli, val)
+
+	if sli[0] > sli[1] {
+		val += compareTwo(sli[0], sli[1])
+	}
+	if sli[0] > sli[1] {
+
+	}
+	fmt.Printf("Valor es: %d\n", val)
+	/* Formating */
+	arr := getThreeFirst(s)
+	fmt.Println(*arr)
+
+	/* Assigning numbers */
+	weights := [][]int{}
+	for j := 0; j < len(*arr); j++ {
+		w := strToNum((*arr)[j])
+		weights = append(weights, w)
+	}
+	fmt.Println(weights)
+
+	numeral := 0
+	for j := 0; j < len(weights); j++ {
+		if len(weights[j]) == 1 {
+			numeral += weights[j][0]
+		}
+		if len(weights[j]) == 2 {
+			numeral += compareTwo(weights[j][0], weights[j][1])
+		}
+		if len(weights[j]) == 3 {
+			if weights[j][0] >= weights[j][1] {
+				numeral += weights[j][0]
+				numeral += compareTwo(weights[j][1], weights[j][2])
+			}
+			if weights[j][0] < weights[j][1] {
+				numeral += compareTwo(weights[j][0], weights[j][1])
+			}
+		}
+		fmt.Println(numeral)
+	}
 }
