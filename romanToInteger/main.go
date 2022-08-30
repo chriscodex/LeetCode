@@ -71,3 +71,11 @@ func total(arr []int, cont int) int {
 	}
 	return val
 }
+
+func romainToInt(s string) int {
+	val = 0
+	conv := strToNum(s)
+	v := total(conv, 0)
+	fmt.Println(v)
+	return v
+}
