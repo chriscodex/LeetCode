@@ -1,5 +1,19 @@
 package main
 
+func compareTwo(a, b int) int {
+	numeral := 0
+	if a == b {
+		numeral += 2 * a
+	}
+	if a > b {
+		numeral += a + b
+	}
+	if a < b {
+		numeral += b - a
+	}
+	return numeral
+}
+
 func strToNum(s string) []int {
 	arr := []int{}
 	for _, e := range s {
