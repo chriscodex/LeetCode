@@ -4,38 +4,6 @@ import (
 	"fmt"
 )
 
-func getThreeFirst(s string) *[]string {
-	arr := []string{}
-	str := ""
-	for i := 1; i < len(s)+1; i++ {
-		if i%3 == 0 {
-			str += string(s[i-1])
-			arr = append(arr, str)
-			str = ""
-		} else {
-			str += string(s[i-1])
-		}
-	}
-	if str != "" {
-		arr = append(arr, str)
-	}
-	return &arr
-}
-
-func compareTwo(a, b int) int {
-	numeral := 0
-	if a == b {
-		numeral += 2 * a
-	}
-	if a > b {
-		numeral += a + b
-	}
-	if a < b {
-		numeral += b - a
-	}
-	return numeral
-}
-
 func strToNum(s string) []int {
 	arr := []int{}
 	for _, e := range s {
@@ -59,52 +27,47 @@ func strToNum(s string) []int {
 	return arr
 }
 
-func main() {
-	/*  */
-	s := "MCMXCIV"
-	fmt.Println(s)
-	newP := strToNum(s)
-	val := newP[0]
-	sli := newP[1:]
+var val int
 
-	fmt.Println(sli, val)
-
-	if sli[0] > sli[1] {
-		val += compareTwo(sli[0], sli[1])
-	}
-	if sli[0] > sli[1] {
-
-	}
-	fmt.Printf("Valor es: %d\n", val)
-	/* Formating */
-	arr := getThreeFirst(s)
-	fmt.Println(*arr)
-
-	/* Assigning numbers */
-	weights := [][]int{}
-	for j := 0; j < len(*arr); j++ {
-		w := strToNum((*arr)[j])
-		weights = append(weights, w)
-	}
-	fmt.Println(weights)
-
+func compareTwo(a, b int) int {
 	numeral := 0
-	for j := 0; j < len(weights); j++ {
-		if len(weights[j]) == 1 {
-			numeral += weights[j][0]
-		}
-		if len(weights[j]) == 2 {
-			numeral += compareTwo(weights[j][0], weights[j][1])
-		}
-		if len(weights[j]) == 3 {
-			if weights[j][0] >= weights[j][1] {
-				numeral += weights[j][0]
-				numeral += compareTwo(weights[j][1], weights[j][2])
-			}
-			if weights[j][0] < weights[j][1] {
-				numeral += compareTwo(weights[j][0], weights[j][1])
-			}
-		}
-		fmt.Println(numeral)
+	if a == b {
+		numeral += 2 * a
 	}
+	if a > b {
+		numeral += a + b
+	}
+	if a < b {
+		numeral += b - a
+	}
+	return numeral
+}
+
+func total(arr []int, cont int) int {
+	if len(arr) == 1 {
+		return arr[0]
+	}
+	if len(arr) == 2 {
+		return compareTwo(arr[0], arr[1])
+	}
+	if cont == len(arr)-1 {
+		val += arr[cont]
+		return val
+	}
+	if cont == len(arr)-2 {
+		fmt.Println(cont)
+		val += compareTwo(arr[cont], arr[cont+1])
+		return val
+	}
+	if arr[cont] >= arr[cont+1] {
+		val += arr[cont]
+		cont++
+		return total(arr, cont)
+	}
+	if arr[cont] < arr[cont+1] {
+		val += arr[cont+1] - arr[cont]
+		cont += 2
+		return total(arr, cont)
+	}
+	return val
 }
