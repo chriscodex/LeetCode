@@ -28,6 +28,26 @@ func TwoSum(nums []int, target int) []int {
 	return []int{}
 }
 
+func TwoSumConc(nums []int, target int) []int {
+	ch := make(chan []int)
+	c := 1
+	for i := 0; i < len(nums); i++ {
+		if nums[i] > int(math.Pow10(9)) || nums[i] < int(math.Pow(-10, 9)) {
+			return []int{}
+		}
+
+		cont := c
+		for cont < len(nums) {
+			if i != cont {
+
+			}
+			cont++
+		}
+		c++
+	}
+	return <-ch
+}
+
 func main() {
 	arrT := []int{3, 2, 3}
 	tar := 6
