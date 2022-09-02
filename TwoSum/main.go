@@ -56,6 +56,17 @@ func TwoSumConc(nums []int, target int) []int {
 	return <-ch
 }
 
+func TwoSumConc2(nums []int, target int) []int {
+	ch := make(chan []int)
+	for i := 0; i < len(nums); i++ {
+		if nums[i] > int(math.Pow10(9)) || nums[i] < int(math.Pow(-10, 9)) {
+			return []int{}
+		}
+
+	}
+	return <-ch
+}
+
 func main() {
 	arrT := []int{3, 2, 3}
 	tar := 6
