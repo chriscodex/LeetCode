@@ -63,6 +63,16 @@ func TwoSumConc2(nums []int, target int) []int {
 			return []int{}
 		}
 
+		go func(ind int, ct int) {
+			for ct < len(nums) {
+				val := nums[ind] + nums[ct]
+				if val == target {
+					ch <- []int{ind, ct}
+				} else {
+					ct++
+				}
+			}
+		}(i, i+1)
 	}
 	return <-ch
 }
