@@ -29,6 +29,9 @@ func TwoSum(nums []int, target int) []int {
 }
 
 func TwoSumConc(nums []int, target int) []int {
+	if target > int(math.Pow10(9)) || target < int(math.Pow(-10, 9)) {
+		return []int{}
+	}
 	ch := make(chan []int)
 	c := 1
 	for i := 0; i < len(nums); i++ {
