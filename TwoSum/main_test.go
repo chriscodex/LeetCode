@@ -36,4 +36,8 @@ func TestTwoSum(t *testing.T) {
 			out:    []int{9998, 9999},
 		},
 	}
+	for _, e := range arrOut {
+		result := TwoSumConc2(e.nums, e.target)
+		c.Equal(e.out, result)
+	}
 }
