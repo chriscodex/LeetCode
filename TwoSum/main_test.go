@@ -17,6 +17,10 @@ func TestTwoSum(t *testing.T) {
 			nums:   []int{2, 7, 11, 17},
 			target: 9,
 			out:    []int{0, 1},
+		}, {
+			nums:   []int{3, 2, 4},
+			target: 6,
+			out:    []int{1, 2},
 		},
 	}
 }
