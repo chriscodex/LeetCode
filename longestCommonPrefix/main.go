@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func compareTwoStrings(first string, second string) string {
 	if first == "" || second == "" {
 		return ""
@@ -34,4 +36,10 @@ func longestCommonPrefix(strs []string) string {
 		cm = compareTwoStrings(cm, strs[i])
 	}
 	return cm
+}
+
+func main() {
+	strs := []string{"ab", "a"}
+	lcp := longestCommonPrefix(strs)
+	fmt.Println(lcp)
 }
