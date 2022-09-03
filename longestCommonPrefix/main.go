@@ -2,39 +2,33 @@ package main
 
 import "fmt"
 
-func longestCommonPrefix(strs []string) string {
-	if len(strs) == 1 {
-		return strs[0]
+func compareTwoStrings(first string, second string) string {
+	if first == "" || second == "" {
+		return ""
 	}
-	word := []byte{}
-
-	cprefix := make(map[int]byte)
-
-	for _, e := range strs[0] {
-		word = append(word, byte(e))
+	arr := []string{}
+	var compare int
+	if len(first) < len(second) {
+		compare = len(first)
+	} else {
+		compare = len(second)
 	}
-
-	for j := 1; j < len(strs)-1; j++ {
-		cont := 0
-		for cont <= len(strs[j])-1 {
-			if word[cont] == strs[j][cont] {
-				cprefix[cont] = word[cont]
-				cont++
-			} else {
-				delete(cprefix, cont)
-				cont++
-			}
+	for i := 0; i < compare; i++ {
+		if first[i] == second[i] {
+			arr = append(arr, string(first[i]))
+		} else {
+			break
 		}
 	}
 	s := ""
-	for _, e := range cprefix {
-		s += string(e)
+	for _, e := range arr {
+		s += e
 	}
 	return s
 }
 
 func main() {
-	strs := []string{"flower", "flow", "flight"}
-	lcp := longestCommonPrefix(strs)
+	strs := []string{"ab", "a"}
+	lcp := longCommPref(strs)
 	fmt.Println(lcp)
 }
