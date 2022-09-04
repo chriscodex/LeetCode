@@ -29,6 +29,10 @@ func TestLongestCommonPrefix(t *testing.T) {
 			strs: []string{"racecar", "dog", "car"},
 			out:  "",
 		},
+		{
+			strs: []string{"flower", "flow", "flight"},
+			out:  "fl",
+		},
 	}
 
 	for _, e := range arrTest {
