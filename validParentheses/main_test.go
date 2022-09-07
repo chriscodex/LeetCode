@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -37,9 +38,13 @@ func TestIsValid(t *testing.T) {
 			input:  "{{[{}]}}",
 			output: true,
 		},
+		{
+			input:  "{[{]}",
+			output: false,
+		},
 	}
 
 	for _, e := range arrTest {
-		c.Equal(e.output, isValid(e.input))
+		c.Equal(e.output, isValid(e.input), fmt.Sprintf("Input: %s", e.input))
 	}
 }
