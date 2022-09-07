@@ -26,4 +26,8 @@ func TestIsValid(t *testing.T) {
 			output: false,
 		},
 	}
+
+	for _, e := range arrTest {
+		c.Equal(e.output, isValid(e.input))
+	}
 }
