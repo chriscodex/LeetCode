@@ -33,6 +33,10 @@ func TestIsValid(t *testing.T) {
 			input:  "([{])",
 			output: false,
 		},
+		{
+			input:  "{{[{}]}}",
+			output: true,
+		},
 	}
 
 	for _, e := range arrTest {
