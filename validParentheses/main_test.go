@@ -21,5 +21,9 @@ func TestIsValid(t *testing.T) {
 			input:  "()[]{}",
 			output: true,
 		},
+		{
+			input:  "(]",
+			output: false,
+		},
 	}
 }
