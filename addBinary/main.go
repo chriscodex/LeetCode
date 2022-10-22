@@ -5,6 +5,8 @@ import (
 	"strconv"
 )
 
+/* https://leetcode.com/problems/add-binary/ */
+
 func validateBinary(s string) bool {
 	for _, e := range s {
 		if string(e) != "0" && string(e) != "1" {
