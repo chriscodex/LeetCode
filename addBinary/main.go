@@ -27,13 +27,27 @@ func addBinary(a string, b string) string {
 
 	sumBin := []string{}
 
-	sumBin = append(sumBin, "0")
+	//sumBin = append(sumBin, "0")
 
 	ca, cb := len(a)-1, len(b)-1
 	for ca >= 0 && cb >= 0 {
-		v := byteToInt(a[ca]) + byteToInt(b[cb])
-		fmt.Println(v)
+		v := byteToInt(a[ca]) + byteToInt(b[cb]) + byteToInt(sumBin[ca][ca])
+		switch v {
+		case 1:
+			sumBin = append(sumBin, "1")
+			ca--
+			cb--
+		case 2:
+			sumBin = append(sumBin, "0")
+			ca--
+			cb--
+		case 3:
+			sumBin = append(sumBin, "1")
+			ca--
+			cb--
+		}
 	}
+	fmt.Println(sumBin)
 
 	if a == "11" && b == "1" {
 		return "100"
@@ -43,5 +57,5 @@ func addBinary(a string, b string) string {
 }
 
 func main() {
-	addBinary("11", "100")
+	addBinary("11", "101")
 }
